@@ -150,7 +150,12 @@ As companion screens (e.g., smartphones and tablets) continue to be integrated i
 The OBB approach is such a technology that allows the content of a TV program to adapt to the requirements of different viewers on multiple companion screens, without requiring the production team to separately produce different versions of the program. The "object", here, refers to different media assets or content objects that are used to make a TV program \cite{armstrong2014}. The OBB approach involves breaking down a program into separate objects, typically including graphics, audio, video, background music, dialogues, subtitles, sound/visual effects, etc., and including a metadata to describe how these objects can be assembled on multiscreens. It enables the production of a flexible, personalized, and responsive program without increasing the production workload\cite{kegel2017, williams2016}.
 
 \section{Preparation}
-\todo{Jie to provide a timeline of the process, including the matches we had access to, and the technological milestones; please include such information in the introduction already}
+
+\begin{marginfigure}
+    \includegraphics[width=\marginparwidth]{Figures/ChyronHegotool.jpg}
+    \caption{Broadcast graphic authoring tool by ChyronHego}
+    \label{fig:chyronhego}
+\end{marginfigure}
 
 Previously, we have reported successful groundwork for the design and development of a novel object-based broadcasting platform \cite{kegel2017, Li:2018_CHI, Li:2018_TVX}. Our next objective was its deployment during a live event like the FA Final Cup 2018 in Wembley. To better understand the challenges of delivering such trial at a live football match broadcast, the authors negotiated (via BT Sport) to allow observation for better understanding of the current workflow involved at an OB truck. In particular, the following events were observed:
 \begin{itemize}
@@ -169,9 +174,9 @@ Such observations and tests resulted in a number of requirements, anticipating o
 \subsection{Graphics}
 
 \begin{marginfigure}
-    \includegraphics[width=\marginparwidth]{Figures/ChyronHegotool.jpg}
-    \caption{Broadcast graphic authoring tool by ChyronHego}
-    \label{fig:chyronhego}
+    \includegraphics[width=\marginparwidth]{Figures/process.png}
+    \caption{Production process for a live broadcast with our production platform}
+    \label{fig:process}
 \end{marginfigure}
 
 Object-Based broadcasting provides user-level personalization and it thus requires all broadcast graphics (non-video visualizations overlaid on top of the video) to be directly composited on the client device. This is a major shift from traditional broadcast, where all the graphics are ocerlaid at the OB Truck, making the creation process for such graphics quite cumbersome and time consuming. The design of these graphic elements, and animations, is thoroughly crafted and specified down to pixel perfection. We tried to adopt a workflow common in traditional TV stations and networks, which meant that a new purpose-built WYSIWYG design tool was needed. Since there was no time and resources to create one, the short-term solution was to adapt an existing one from ChyronHego's shelves products (Figure~\ref{fig:chyronhego}). The researchers extended the existing broadcast graphics authoring tool ChyronHego Prime with a compatible renderer, making it work within our object-based broadcast infrastructure.
