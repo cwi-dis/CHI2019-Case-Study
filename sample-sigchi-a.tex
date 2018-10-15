@@ -103,7 +103,6 @@ will be given to the infrastructure facilitating the live stream.
 \maketitle
 
 \section{Introduction}
-\todo{merge the related work and the introduction}
 
  The world of live-broadcasting is a world of well-defined workflows comprised
  of relatively few but time-critical tasks. The roles inside an Outside-Broadcast (OB)
@@ -117,19 +116,19 @@ will be given to the infrastructure facilitating the live stream.
 
  This case study presents the development and successful deployment of an
  end-to-end platform for interactive, immersive broadcasts over the Internet at
- a live sport event. More specifically, we detail how the initial idea for the
- so-called \emph{Live Triggering} tool - a tool for inserting broadcast objects
- into live streams - came about and how the platform evolved over the course of
- several trials by interviewing professionals from the world  of broadcasting.
+ a live sport event. In particular, we will detail the requirement gathering phase,
+ the aspects of the system used during the broadcast, including \emph{a graphics compositing
+ application}, a so-called \emph{Live Triggering} tool for inserting broadcast objects
+ into live streams, the camera setup, real-time encoding of video feeds and content
+ distribution over the Internet.
  We show the way from a rough first prototype to a complete multi-user platform
  with hardware integration. Finally, we also present a series of trials and
- experiments that were completed along the way,  culminating in a final
- deployment at the FA Cup final at Wembley stadium in London in May 2018, where
- the platform was used to support a test-broadcast of the football match,
- delivering the experience to a number of project members in their homes.
+ experiments that were completed along the way, culminating the final
+ deployment of the system at the FA Cup final at Wembley stadium in London in
+ May 2018, where the platform was used to support a test-broadcast of the
+ football match, delivering the experience to a number of project members in their homes.
 
-\section{Related Work}
-An Outside Broadcasting (OB) truck is the most common unit for live sports
+At such an event, an Outside Broadcasting (OB) truck is the most common unit for live sports
 broadcasting. With its mobility, OB trucks can access any location and work as
 a drive-in temporary production control center during live broadcasting with
 complete video and audio facilities. An OB truck typically has a wall of monitors
@@ -142,14 +141,14 @@ happening \cite{owens2012, owens2015}.
 OB trucks vary in sizes depending on the scale of coverage and the nature of the
 event. For a sport event, the coverage includes dozens of stationary cameras, a
 couple of handheld cameras, cameras on motorcycles to capture the main athletes
-and one or two helicopters with cameras to shoot the "long-shot" of the
-scene \cite{owens2012, Li:2018_TVX}. Today, the production team on OB trucks
+and one or two helicopters with cameras to shoot the \emph{long-shot} of the
+scene~\cite{owens2012, Li:2018_TVX}. Today, the production team on OB trucks
 orchestrate smoothly to deliver the same linear live program to all kinds TV
-screens. The team typically follow a pre-scripted "running order document" that
+screens. The team typically follows a pre-scripted \emph{running order document} that
 defines in detail where graphics, visual sources and sound come from and when
-they should be "on-air" \cite{Li:2018_TVX}.
+they should be \emph{on-air} \cite{Li:2018_TVX}.
 
-As companion screens (e.g., smartphones and tablets) continue to be integrated
+As companion screens (e.g. smartphones and tablets) continue to be integrated
 into standard television, a challenge the production team facing is to tailor
 the content of the TV program so that it works for companion screens as though
 it had been uniquely created for them. Content on companion screens are
@@ -160,17 +159,18 @@ of the live broadcasting on OB trucks, it is difficult to deliver additional
 versions of the program to companion screens. New technologies are required for
 this purpose \cite{Li:2018_TVX, armstrong2014}.
 
-The OBB approach is such a technology that allows the content of a TV program to
+One such technology is the \emph{object-based broadcasting} (OBB) approach.
+It allows the content of a TV program to
 adapt to the requirements of different viewers on multiple companion screens,
 without requiring the production team to separately produce different versions
-of the program. The "object", here, refers to different media assets or content
+of the program. The \emph{object}, here, refers to different media assets or content
 objects that are used to make a TV program \cite{armstrong2014}. The OBB approach
 involves breaking down a program into separate objects, typically including
 graphics, audio, video, background music, dialogues, subtitles, sound/visual
 effects, etc., and including a metadata to describe how these objects can be
-assembled on multiscreens. It enables the production of a flexible, personalized,
+assembled on multiple screens. It enables the creation of a flexible, personalized,
 and responsive program without increasing the production
-workload\cite{kegel2017, williams2016}.
+workload~\cite{kegel2017, williams2016}.
 
 \section{Preparation}
 
@@ -182,8 +182,8 @@ workload\cite{kegel2017, williams2016}.
 
 Previously, we have reported successful groundwork for the design and development
 of a novel object-based broadcasting platform \cite{kegel2017, Li:2018_CHI, Li:2018_TVX}.
-Our next objective was its deployment during a live event like the FA Final Cup
-2018 in Wembley. To better understand the challenges of delivering such trial at
+Our next objective was its deployment during a live event like the FA Cup Final
+2018 in Wembley. To better understand the challenges of delivering such a trial at
 a live football match broadcast, the authors negotiated (via BT Sport) to allow
 observation for better understanding of the current workflow involved at an OB
 truck. In particular, the following events were observed:
@@ -194,8 +194,8 @@ truck. In particular, the following events were observed:
         with an overview of the director's role in creating the broadcast mix of
         video, graphics and commentary narrative for the match;
   \item Women's Super League match at Kingsmeadow Stadium on Thursday 1st
-        February 2018, where access was granted to observe and record at the OB
-        truck. A number of Go Pro cameras were used to capture the pre-broadcast
+        February 2018, where access was granted to observe and record inside the OB
+        truck. A number of GoPro cameras were used to capture the pre-broadcast
         preparation and live broadcast activity within the main gallery of the
         truck. These videos were composited into a synchronized quad view video
         along with the broadcast output.
@@ -211,13 +211,13 @@ April 2018 (FA Cup Semi-Final) and on 12th May 2018 (National League Play-Off Fi
 Such observations and tests resulted in a number of requirements, anticipating
 operational and technological risks. Such requirements included, for example,
 the creation of a number of documents such as the call sheet and the team sheet
-(for pre-populating 1 hour before the beginning of the match the graphics with
-the correct player names). The requirements covered as well technological
+(for pre-populating the graphics with the correct player names one hour before
+the beginning of the match). The requirements covered as well technological
 aspects, such as the pre-production of the assets, the development of the
-infrastructure to be deployed at the venue and in the cloud, and the access to
+infrastructure to be deployed at the venue and in the cloud and the access to
 various data channels such as the clean video data feeds. Finally, there were
-more operational guidelines for, for example, granting access to the researchers
-or collocating our mini OB truck in the OB Compound with the other broadcasters.
+other operational guidelines for, for example, granting access to the researchers
+or colocating our mini OB truck in the OB Compound with the other broadcasters.
 The following subsections will detail the different preparation steps before the
 official match day.
 
@@ -236,18 +236,19 @@ official match day.
 Object-Based broadcasting provides user-level personalization and it thus
 requires all broadcast graphics (non-video visualizations overlaid on top of
 the video) to be directly composited on the client device. This is a major shift
-from traditional broadcast, where all the graphics are ocerlaid at the OB Truck,
+from traditional broadcasts, where all graphics are overlaid at the OB Truck,
 making the creation process for such graphics quite cumbersome and time consuming.
-The design of these graphic elements, and animations, is thoroughly crafted and
+The design of these graphic elements and animations is thoroughly defined and
 specified down to pixel perfection. We tried to adopt a workflow common in traditional
 TV stations and networks, which meant that a new purpose-built WYSIWYG design
 tool was needed. Since there was no time and resources to create one, the
-short-term solution was to adapt an existing one from ChyronHego's shelves
-products (Figure~\ref{fig:chyronhego}). The researchers extended the existing
-broadcast graphics authoring tool ChyronHego Prime with a compatible renderer,
-making it work within our object-based broadcast infrastructure.
+short-term solution was to adapt an existing one from ChyronHego's product range
+(Figure~\ref{fig:chyronhego}). The researchers extended the existing
+broadcast graphics authoring tool \emph{ChyronHego Prime} with a compatible renderer,
+making it usable within our object-based broadcast infrastructure.
 
 \subsection{Production Tool}
+
 Previous work of the research team resulted in a novel model and workflow for
 production tools that allow for object-based broadcasting \cite{Li:2018_TVX}.
 The tools were intended for covering MotoGP races, but we had the intuition that
