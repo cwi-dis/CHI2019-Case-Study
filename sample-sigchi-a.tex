@@ -95,7 +95,7 @@ a series of insights gained during the process.
 \end{abstract}
 
 \begin{marginfigure}
-    \vspace{15pc}
+    \vspace{17pc}
     \includegraphics[width=\marginparwidth]{Figures/overview.jpg}
     \caption{Overview of an OB truck at a live sporting event}
     \label{fig:overview}
@@ -111,8 +111,8 @@ a series of insights gained during the process.
  The world of live-broadcasting is a world of well-defined workflows comprised
  of relatively few but time-critical tasks. The roles inside an Outside-Broadcast (OB)
  truck at a live sporting event are also strictly and subdivided into a few
- discrete stations where each station has to rely on other stations to complete
- their tasks in a timely manner as to  not incur any delays, which would start
+ discrete stations (Figure~\ref{fig:overview}) where each station has to rely on other stations to complete
+ their tasks in a timely manner as to not incur any delays, which would start
  to propagate and accumulate down the line and thus potentially cause
  transmission delays. For this reason, it is important that any software
  provided to supplement the workflow in an OB truck be easy to use and operate,
@@ -132,10 +132,17 @@ a series of insights gained during the process.
  May 2018, where the platform was used to support a test-broadcast of the
  football match, delivering the experience to a number of project members in their homes.
 
+\begin{marginfigure}
+    \vspace{-17pc}
+    \includegraphics[width=\marginparwidth]{Figures/OBTruck.png}
+    \caption{Layout of a typical OB truck used at a live sporting event}
+    \label{fig:truck}
+\end{marginfigure}
+
 At such an event, an Outside Broadcasting (OB) truck is the most common unit for live sports
 broadcasting. With its mobility, OB trucks can access any location and work as
 a drive-in temporary production control center during live broadcasting with
-complete video and audio facilities. An OB truck typically has a wall of monitors
+complete video and audio facilities (Figure~\ref{fig:truck}). An OB truck typically has a wall of monitors
 shared by all the staff on the truck, video production switcher controlled by
 the director, audio mixer, a team in charge of recording and playback decks, and
 a team responsible for live graphics and so on. It enables the production team
@@ -163,6 +170,13 @@ of the live broadcasting on OB trucks, it is difficult to deliver additional
 versions of the program to companion screens. New technologies are required for
 this purpose \cite{Li:2018_TVX, armstrong2014}.
 
+\begin{marginfigure}
+    \vspace{-12pc}
+    \includegraphics[width=\marginparwidth]{Figures/process.png}
+    \caption{Production process for a live broadcast with our production platform}
+    \label{fig:process}
+\end{marginfigure}
+
 One such technology is the \emph{object-based broadcasting} (OBB) approach.
 It allows the content of a TV program to
 adapt to the requirements of different viewers on multiple companion screens,
@@ -174,15 +188,10 @@ graphics, audio, video, background music, dialogues, subtitles, sound/visual
 effects, etc., and including a metadata to describe how these objects can be
 assembled on multiple screens. It enables the creation of a flexible, personalized,
 and responsive program without increasing the production
-workload~\cite{kegel2017, williams2016}.
+workload~\cite{kegel2017, williams2016}. A rough layout of the production process
+using our OBB system can be seen in Figure~\ref{fig:process}.
 
 \section{Preparation}
-
-\begin{marginfigure}
-    \includegraphics[width=\marginparwidth]{Figures/ChyronHegotool.jpg}
-    \caption{Broadcast graphic authoring tool by ChyronHego}
-    \label{fig:chyronhego}
-\end{marginfigure}
 
 Previously, we have reported successful groundwork for the design and development
 of a novel object-based broadcasting platform \cite{kegel2017, Li:2018_CHI, Li:2018_TVX}.
@@ -232,9 +241,10 @@ official match day.
 \subsection{Graphics}
 
 \begin{marginfigure}
-    \includegraphics[width=\marginparwidth]{Figures/process.png}
-    \caption{Production process for a live broadcast with our production platform}
-    \label{fig:process}
+    \vspace{-10pc}
+    \includegraphics[width=\marginparwidth]{Figures/ChyronHegotool.jpg}
+    \caption{Broadcast graphic authoring tool by ChyronHego}
+    \label{fig:chyronhego}
 \end{marginfigure}
 
 Object-Based broadcasting provides user-level personalization and it thus
@@ -310,12 +320,6 @@ a companion device such as a tablet (Figure~\ref{fig:homeexperience}).
 %\textbf{TV Match GFX}: the BT Sport Match GFX were replicated in terms of style, layout and animations using the modified version of the ChyronHego's Prime authoring tool. These included, among others, the clock, the score, all the players.
 %\textbf{Companion Graphics}: the BT Sport design style was adopted when creating the graphics for the companion app GUI. To launch the menu in the companion, the user could tap and access more media about the match (e.g., match overview, match stats, team line ups and replays).
 
-\begin{marginfigure}
-    \includegraphics[width=\marginparwidth]{Figures/footballathome1.jpg}
-    \caption{Experience at home as viewed by an end user: television screen (top), tablet (middle) and user-customizable screen configurations for companion screen (bottom)}
-    \label{fig:homeexperience}
-\end{marginfigure}
-
 The deployment at Wembley Stadium was centered around our very own OB vehicle, a
 Mercedes Sprinter van fitted with two small work areas and basic services
 such as power, cable routing, air conditioning and lighting. This vehicle was
@@ -336,6 +340,12 @@ broadcast feeds, the main camera-wide shot, the manager cameras, the team
 benches, the LH and RH High behind, and the Spider cam. Each camera feed was
 provided in HD-SDI format in a separate coaxial cable routed from the BT Sport
 production truck to the vehicle.
+
+\begin{marginfigure}
+    \includegraphics[width=\marginparwidth]{Figures/footballathome1.jpg}
+    \caption{Experience at home as viewed by an end user: television screen (top), tablet (middle) and user-customizable screen configurations for companion screen (bottom)}
+    \label{fig:homeexperience}
+\end{marginfigure}
 
 \vspace{5pt}\noindent\textbf{Live Encoding.} Two live streaming encoders were loaned for the duration
 of the tests by BT supplier AWS Elemental, who also provided technical assistance
@@ -402,10 +412,19 @@ due to large buffers resulting from the MPEG-DASH live streaming configuration.
 %  \todo{to discuss about our production tools and the next steps}
 %  \todo{to bring back other papers and experiences, like the one from Frank Bentley}
 
-\textbf{Lessons learned.} The live trial successfully bridged the gap between research in
-the lab and the key players in the production chain (e.g. BT Sports, MoovTV),
-motivating them to think of developing future use cases or production tools that
-would take OBB features into account. As noted by Bentley and Groble~\cite{bentley2009},
+\begin{marginfigure}
+    \vspace{-13pc}
+    \hspace{-3pc}
+    \includegraphics[width=\marginparwidth+3pc]{Figures/timeline.png}
+    \caption{Timeline of the project}
+    \label{fig:timeline}
+\end{marginfigure}
+
+\textbf{Lessons learned.} Over the course of the project (Figure~\ref{fig:timeline}) we
+successfully bridged the gap between lab research 
+and the key players in the production chain (e.g. BT Sports, MoovTV),
+motivating them to think of developing use cases or tools that
+could take OBB features into account. As noted by Bentley and Groble~\cite{bentley2009},
 the ethnographic-style field study can take new concepts to the real users in
 the early stage of development, which can quickly illuminate potential
 bottlenecks and challenges. In our trial, the first challenge was to smooth the
@@ -422,10 +441,17 @@ polished as-live multiscreen FA Cup demonstration, showing how production
 tools were used to edit and broadcast graphics in an OBB manner. Together with
 the production tools, it exhibited how viewers can personalize their experiences
 through companion screens in the context of the home. The
-demonstration was successfully presented at the \emph{Future Zone} of IBC, the world's
+demonstration was successfully presented at the \emph{Future Zone} of IBC (Figure~\ref{fig:ibc}), the world's
 most influential media technology exhibition. The exhibition received a wide
 range of audience including key stakeholders from the broadcast industry,
 university researchers, production teams. All of them believed "OBB is the future".
+
+\begin{marginfigure}
+    \vspace{5pc}
+    \includegraphics[width=\marginparwidth]{Figures/IBC.jpg}
+    \caption{Presenting the project at IBC 2018 in Amsterdam}
+    \label{fig:ibc}
+\end{marginfigure}
 
 \vspace{5pt}\noindent\textbf{Future work.} To help integrate the OBB approach into the existing
 production workflow, the next step is to develop a pre-production tool with a
