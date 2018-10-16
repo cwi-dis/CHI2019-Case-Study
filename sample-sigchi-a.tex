@@ -33,14 +33,14 @@
 \begin{document}
 \title{From the Lab to the OB Truck: Object-Based Broadcasting at the FA Cup in Wembley Stadium}
 
-\author{Thomas R\"{o}ggla$^1$, Jie Li$^1$, Jack Jansen$^1$, Pablo Cesar$^{1,2}$, Doug Williams$^3$, Ian Kegel$^3$, Martin Trimby$^3$, Luke Pilgrim$^3$, Stefan Fjellsten$^4$}
+\author{Thomas R\"{o}ggla$^1$, Jie Li$^1$, Jack Jansen$^1$, Doug Williams$^3$, Ian Kegel$^3$, Martin Trimby$^3$, Luke Pilgrim$^3$, Stefan Fjellsten$^4$, Pablo Cesar$^{1,2}$}
 \affiliation{%
   \institution{\vspace{9pt}Centrum Wiskunde \& Informatica$^1$ \quad Amsterdam, The Netherlands}
   \institution{Delft University of Technology$^2$ \quad Delft, The Netherlands}
   \institution{BT Research \& Innovation$^3$ \quad Ipswich, United Kingdom}
   \institution{ChyronHego AB$^4$ \quad Stockholm, Sweden}}
 
-\affiliation{\vspace{9pt}\{t.roggla, jie.li, jack.jansen, p.s.cesar\}@cwi.nl, \{doug.williams, ian.c.kegel, martin.trimby, luke.2.pilgrim\}@bt.com, stefan.fjellsten@chyronhego.com}
+\affiliation{\vspace{9pt}\{t.roggla, jie.li, jack.jansen\}@cwi.nl, \{doug.williams, ian.c.kegel, martin.trimby, luke.2.pilgrim\}@bt.com, stefan.fjellsten@chyronhego.com, p.s.cesar@cwi.nl}
 
 % The default list of authors is too long for headers.
 \renewcommand{\shortauthors}{T. R\"{o}ggla et al.}
@@ -92,19 +92,21 @@
   London in May 2018. We then describe the trials and interviews we ran, the
   infrastructure we used, the final software developed for controlling and rendering
   on-screen graphics and the system for generating and configuring the live
-  broadcast-objects. During this process, we learned \ldots which we discuss alongside other insights gained.
+  broadcast-objects. During this process, we learned about the workflows inside an OB
+  truck during live productions through an ethnographic study and the challenges
+  involved in running an object-based broadcast over the Internet which we discuss
+  alongside other insights gained.
 \end{abstract}
 
 \begin{marginfigure}
 \vspace{3.6cm}
     \hspace*{-2cm}
     \includegraphics[width=9cm]{Figures/overview.jpg}
-    \caption{Ethnographic study at OB trucks at Wembley Stadium (top) and Kingsmeadow Stadium (bottom)}
+    \caption{Ethnographic study at the OB truck of Wembley Stadium (top) and Kingsmeadow Stadium (bottom)}
     \label{fig:overview}
 \end{marginfigure}
 
-\keywords{Authors' choice; of terms; separated; by
-  semicolons; include commas, within terms only; required.}
+\keywords{someone; please; do; the; keywords; i; cant; be; bothered}
 
 \maketitle
 
@@ -195,7 +197,6 @@ workload~\cite{kegel2017, williams2016}. A rough layout of the production proces
 using our OBB system can be seen in Figure~\ref{fig:process}.
 
 \section{Preparation}
-
 Previously, we have reported successful groundwork for the design and development
 of a novel object-based broadcasting platform \cite{kegel2017, Li:2018_CHI, Li:2018_TVX}.
 Our next objective was its deployment during a live event like the FA Cup Final
@@ -260,8 +261,7 @@ The design of these graphic elements and animations is thoroughly defined and
 specified down to pixel perfection. We tried to adopt a workflow common in traditional
 TV stations and networks, which meant that a new purpose-built WYSIWYG design
 tool was needed. Since there was no time and resources to create one, the
-short-term solution was to adapt an existing one from ChyronHego's product range
-(Figure~\ref{fig:chyronhego}). The researchers extended the existing
+short-term solution was to adapt an existing one from ChyronHego's product range. The researchers extended the existing
 broadcast graphics authoring tool \emph{ChyronHego Prime} with a compatible renderer,
 making it usable within our object-based broadcast infrastructure.
 
@@ -442,7 +442,7 @@ bottlenecks and challenges. In our trial, the first challenge was to smooth the
 graphics creation workflow in this time-critical environment. To
 do so, we used an existing authoring tool (ChyronHego Prime) with a graphical
 interface but an XML-based storage format, enabling a \textit{designer} to create
-graphics without needing a \textit{developer}. However, the application was not specifically designed for OBB processes. New production tools to visually create OBB assets are needed. The second challenge addressed is the usability of the OBB production tools. A refinement of our tools towards re-usability of content and customization of graphics is expected. 
+graphics without needing a \textit{developer}. However, the application was not specifically designed for OBB processes. New production tools to visually create OBB assets are needed. The second challenge addressed is the usability of the OBB production tools. A refinement of our tools towards re-usability of content and customization of graphics can be expected. 
 
 \vspace{5pt}\noindent\textbf{Impact on the industry.} Based on the video assets
 collected from the Wembley trial (Figure~\ref{fig:liveproduction}), the project team developed a more complete and
