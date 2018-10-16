@@ -113,14 +113,15 @@
 \section{Introduction}
 
  The world of live-broadcasting is a world of well-defined workflows comprised
- of relatively few but time-critical tasks. The roles inside an Outside-Broadcast (OB)
- truck at a live sporting event are also strictly and subdivided into a few
- discrete stations (Figure~\ref{fig:overview}) where each station has to rely on other stations to complete
- their tasks in a timely manner as to not incur any delays, which would start
- to propagate and accumulate down the line and thus potentially cause
- transmission delays. For this reason, it is important that any software
- provided to supplement the workflow in an OB truck be easy to use and operate,
- facilitate collaboration and guarantee timely delivery of the live broadcast.
+ of relatively few but time-critical tasks. The roles inside an Outside-Broadcast
+ (OB) truck at a live sporting event are also strictly and subdivided into a few
+ discrete stations (Figure~\ref{fig:overview}). Each station has to rely on other
+ stations to complete their tasks in a timely manner as to not incur any delays.
+ These delays would start to propagate and accumulate down the line and
+ potentially affect the transmission of the broadcast. For this reason, it is
+ important that any software designed to supplement the workflow in an OB truck
+ be easy to use and operate. Moreover, it should facilitate collaboration and
+ guarantee timely delivery of the live broadcast.
 
  This case study presents the development and successful deployment of an
  end-to-end platform for interactive, immersive broadcasts over the Internet at
@@ -129,12 +130,13 @@
  application}, a so-called \emph{Live Triggering} tool for inserting broadcast objects
  into live streams, the camera setup, real-time encoding of video feeds and content
  distribution over the Internet.
- We show the way from a rough first prototype to a complete multi-user platform
+ We show the path from a rough first prototype to a complete multi-user platform
  with hardware integration. Finally, we also present a series of trials and
  experiments that were completed along the way, culminating the final
  deployment of the system at the FA Cup final at Wembley stadium in London in
- May 2018, where the platform was used to support a test-broadcast of the
- football match, delivering the experience to a number of project members in their homes.
+ May 2018. There, the platform was used to support a test-broadcast of the
+ football match, delivering the experience to a number of project members in
+ their homes.
 
 \begin{marginfigure}
 \vspace{-10cm}
@@ -144,15 +146,15 @@
     \label{fig:truck}
 \end{marginfigure}
 
-At such an event, an Outside Broadcasting (OB) truck is the most common unit for live sports
-broadcasting. With its mobility, OB trucks can access any location and work as
-a drive-in temporary production control center during live broadcasting with
-complete video and audio facilities (Figure~\ref{fig:truck}). An OB truck typically has a wall of monitors
-shared by all the staff on the truck, video production switcher controlled by
-the director, audio mixer, a team in charge of recording and playback decks, and
-a team responsible for live graphics and so on. It enables the production team
-to bring the TV audience an authentic visual report of an event as it is
-happening \cite{owens2012, owens2015}.
+At a big sports event such as this, an Outside Broadcasting (OB) truck is the most
+common unit for live broadcasting. With its mobility, OB trucks can access any
+location and work as a drive-in temporary production control center during live
+transmission providing complete video and audio facilities (Figure~\ref{fig:truck}).
+An OB truck typically has a wall of monitors shared by all the staff in the truck.
+A video production switcher controlled by the director, audio mixer, a team in
+charge of recording and playback decks, and a team responsible for live graphics
+and so on. It enables the production team to bring the TV audience an authentic
+visual representation of an event as it is happening \cite{owens2012, owens2015}.
 
 OB trucks vary in sizes depending on the scale of coverage and the nature of the
 event. For a sport event, the coverage includes dozens of stationary cameras, a
