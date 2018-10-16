@@ -83,24 +83,22 @@
 
 
 \begin{abstract}
-  While traditional live-broadcasting is typically comprised of a handful
+  While traditional live-broadcasting is typically comprised of a handful of
   well-defined workflows, these become insufficient when introducing multiple screens
   and interactive companion devices on the consumer side. In this case study, we describe the
   development of an end-to-end system enabling immersive and interactive live events
-  using an object-based broadcasting approach. It also details the deployment of this
+  using an object-based broadcasting approach. We detail the deployment of this
   system during the live broadcast of the FA Cup final at Wembley Stadium in
-  London in May 2018. We describe the trials and interviews we ran, the
+  London in May 2018. We then describe the trials and interviews we ran, the
   infrastructure we used, the final software developed for controlling and rendering
   on-screen graphics and the system for generating and configuring the live
-  broadcast-objects. During this process, we learned about the workflows inside an
-  OB truck during live productions through an ethnographic study and the challenges
-  involved in running an object-based broadcast over the Internet which we
-  discuss alongside other insights gained.
+  broadcast-objects. During this process, we learned \ldots which we discuss alongside other insights gained.
 \end{abstract}
 
 \begin{marginfigure}
-    \vspace{12pc}
-    \includegraphics[width=\marginparwidth]{Figures/overview.jpg}
+\vspace{3.6cm}
+    \hspace*{-2cm}
+    \includegraphics[width=9cm]{Figures/overview.jpg}
     \caption{Overview of an OB truck at a live sporting event}
     \label{fig:overview}
 \end{marginfigure}
@@ -137,7 +135,7 @@
  football match, delivering the experience to a number of project members in their homes.
 
 \begin{marginfigure}
-% \vspace{-27px}
+\vspace{-10cm}
 \hspace*{-2cm}
     \includegraphics[width=10cm]{Figures/OBtruck.png}
     \caption{Layout of a typical OB truck used at a live sporting event}
@@ -176,8 +174,8 @@ versions of the program to companion screens. New technologies are required for
 this purpose \cite{Li:2018_TVX, armstrong2014}.
 
 \begin{marginfigure}
-    \vspace{-12pc}
-    \includegraphics[width=\marginparwidth]{Figures/process.png}
+    % \vspace{1pt}
+    \includegraphics[width=7cm]{Figures/process.png}
     \caption{Production process for a live broadcast with our production platform}
     \label{fig:process}
 \end{marginfigure}
@@ -246,10 +244,11 @@ official match day.
 \subsection{Graphics}
 
 \begin{marginfigure}
-    \vspace{-17pc}
-    \includegraphics[width=\marginparwidth]{Figures/ChyronHegotool.jpg}
-    \caption{Broadcast graphic authoring tool by ChyronHego}
-    \label{fig:chyronhego}
+    % \vspace{2cm}
+    \hspace*{-2cm}
+    \includegraphics[width=10cm]{Figures/timeline.png}
+    \caption{Timeline of the project}
+    \label{fig:timeline}
 \end{marginfigure}
 
 Object-Based broadcasting provides user-level personalization and it thus
@@ -347,7 +346,9 @@ provided in HD-SDI format in a separate coaxial cable routed from the BT Sport
 production truck to the vehicle.
 
 \begin{marginfigure}
-    \includegraphics[width=\marginparwidth]{Figures/footballathome1.jpg}
+\hspace*{-0.5cm}
+    \includegraphics[width=7cm]{Figures/footballathome1.jpg}
+    
     \caption{Experience at home as viewed by an end user: television screen (top), tablet (middle) and user-customizable screen configurations for companion screen (bottom)}
     \label{fig:homeexperience}
 \end{marginfigure}
@@ -418,11 +419,18 @@ due to large buffers resulting from the MPEG-DASH live streaming configuration.
 %  \todo{to bring back other papers and experiences, like the one from Frank Bentley}
 
 \begin{marginfigure}
-    \vspace{-13pc}
-    \hspace{-3pc}
-    \includegraphics[width=\marginparwidth+3pc]{Figures/timeline.png}
-    \caption{Timeline of the project}
-    \label{fig:timeline}
+    \vspace{-18pc}
+    \hspace*{-1cm}
+    \includegraphics[width=8cm]{Figures/liveproduction.jpg}
+    \caption{The setup of the system in the OB truck at the stadium}
+    \label{fig:liveproduction}
+\end{marginfigure}
+
+\begin{marginfigure}
+    \hspace*{-1cm}
+    \includegraphics[width=8cm]{Figures/IBC.jpg}
+    \caption{Presenting the project at IBC 2018 in Amsterdam}
+    \label{fig:ibc}
 \end{marginfigure}
 
 \textbf{New challenges for the industry.} Over the course of the project (Figure~\ref{fig:timeline}), we successfully bridged the gap between lab research 
@@ -448,18 +456,7 @@ most influential media technology exhibition. The exhibition received a wide
 range of audience including key stakeholders from the broadcast industry,
 university researchers, production teams. All of them believed "OBB is the future".
 
-\begin{marginfigure}
-    \vspace{2pc}
-    \includegraphics[width=\marginparwidth]{Figures/liveproduction.jpg}
-    \caption{The setup of the system in the OB truck at the stadium}
-    \label{fig:liveproduction}
-\end{marginfigure}
 
-\begin{marginfigure}
-    \includegraphics[width=\marginparwidth]{Figures/IBC.jpg}
-    \caption{Presenting the project at IBC 2018 in Amsterdam}
-    \label{fig:ibc}
-\end{marginfigure}
 
 \section{Future Work \& Conclusion}
 To help integrate the OBB approach into the existing
