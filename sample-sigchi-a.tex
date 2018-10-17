@@ -13,7 +13,6 @@
 %\setcopyright{cagov}
 %\setcopyright{cagovmixed}
 
-
 % DOI
 \acmDOI{10.475/123_4}
 
@@ -104,13 +103,19 @@
 \maketitle
 
 \section{Introduction}
-
- Live sports event remains as the core of Television consumption, since it brings the viewers close to and enables them to experience the excitement at the sports scene.  Being "live" and "vivid" is the premise of such experience, which is irreplaceable by time-shifted on-demand viewing like Netflix\cite{matrix2014netflix}. However, due to the unexpected characteristics of live sports events, being "live" is challenging for the production team, especially when the live broadcast is remote (Outside Broadcast). Live outside broadcast is a world of well-defined workflows comprised
- of time-critical tasks. The roles inside an Outside Broadcast
- (OB) truck at a live sports event are strictly divided by tasks, orchestrating the event to minimize delays and mistakes (Figure~\ref{fig:overview}). For this reason, it is
+ Live sport events are at the core of the television industry, since it brings
+ the viewers close to the experience and enables them to enjoy the excitement of the
+ event. The liveness is essential and irreplaceable by time-shifted on-demand viewing
+ such as on Netflix\cite{matrix2014netflix}.
+ However, due to the unpredictable characteristics of a live sport event, this
+ is challenging for the production team, also because the event does not take
+ place in a studio. Live outside broadcasts are a world of well-defined
+ workflows to deal with time-critical tasks. The roles inside an outside broadcast
+ (OB) truck at a live sport event are divided by task, to capture
+ the event while minimizing delays and mistakes (Figure~\ref{fig:overview}). Therefore, it is
  important that any software designed to supplement the workflow in an OB truck
- should be easy to operate. Moreover, it should facilitate the collaboration and
- guarantee timely delivery of the live broadcast.
+ should be easy to operate, facilitate the collaboration within the production team
+ and guarantee timely delivery of the live broadcast.
 
  This case study presents the development and successful deployment of an
  end-to-end platform for interactive, immersive broadcast at
@@ -143,7 +148,8 @@ An OB truck typically has a wall of monitors shared by all the staff in the truc
 A video production switcher controlled by the director, audio mixer, a team in
 charge of recording and playback decks, and a team responsible for live graphics
 and so on. It enables the production team to bring the TV audience an authentic
-visual representation of an event as it is happening \cite{owens2015}. OB trucks vary in sizes depending on the scale of coverage and the nature of the
+visual representation of an event as it is happening \cite{owens2015}.
+OB trucks vary in sizes depending on the scale of coverage and the nature of the
 event. For a sport event, the coverage includes dozens of stationary cameras, a
 couple of handheld cameras, cameras on motorcycles to capture the main athletes
 and one or two helicopters with cameras to shoot the \emph{long-shot} of the
@@ -272,8 +278,9 @@ there are a lot of special-purpose hardware devices with big buttons and dials,
 providing quick access to specific functions.
 
 \begin{marginfigure}
+    \vspace{-6.5cm}
     \includegraphics[width=\marginparwidth-10pt]{Figures/triggertool.jpg}
-    \caption{Trigger tool (top) and trigger launcher (bottom) in operation}
+    \caption{Trigger tool in operation inside a web browser}
     \label{fig:triggertool}
 \end{marginfigure}
 
@@ -281,7 +288,7 @@ providing quick access to specific functions.
 
 \begin{marginfigure}
     \includegraphics[width=\marginparwidth-10pt]{Figures/streamdeck.jpg}
-    \caption{Hardware device \emph{StreamDeck} for operating the trigger launcher}
+    \caption{Trigger launcher and hardware device \emph{StreamDeck} for operating it more conveniently}
     \label{fig:streamdeck}
 \end{marginfigure}
 
@@ -352,7 +359,8 @@ stream encryption need not be used, but instead access control was applied to
 the Origin Server so that client apps were required to authenticate before they
 could download the stream.
 
-\vspace{5pt}\noindent\textbf{Internet Uplink.} Using additional live encoders also necessitated providing Internet uplink capacity dedicated to the OB vehicle. This
+\vspace{5pt}\noindent\textbf{Internet Uplink.} Using additional live encoders
+also necessitated providing Internet uplink capacity dedicated to the OB vehicle. This
 proved to be the most challenging dependency. To upload the 3-layer
 MPEG-DASH representation for 8 distinct live streams, while providing headroom
 for audio streams and signaling, at least 100Mbps upstream was required. Finally, we used a dedicated BT uplink.
