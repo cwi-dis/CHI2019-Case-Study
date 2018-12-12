@@ -30,16 +30,16 @@
 %\acmBadgeR[http://ctuning.org/ae/ppopp2016.html]{ae-logo}
 
 \begin{document}
-\title{From the Lab to the OB Truck: Object-Based Broadcasting at the FA Cup in Wembley Stadium}
+\title{From the Lab to the OB Truck: Object-Based Broadcasting at the FA Cup Final in Wembley Stadium}
 
 \author{Thomas R\"{o}ggla$^1$, Jie Li$^1$, Stefan Fjellsten$^4$, Jack Jansen$^1$,  Ian Kegel$^3$, Luke Pilgrim$^3$, Martin Trimby$^3$, Doug Williams$^3$, Pablo Cesar$^{1,2}$}
 \affiliation{%
   \institution{\vspace{9pt}Centrum Wiskunde \& Informatica$^1$ \quad Amsterdam, The Netherlands}
   \institution{Delft University of Technology$^2$ \quad Delft, The Netherlands}
-  \institution{BT Research \& Innovation$^3$ \quad Ipswich, United Kingdom}
+  \institution{BT Applied Research$^3$ \quad Ipswich, United Kingdom}
   \institution{ChyronHego AB$^4$ \quad Stockholm, Sweden}}
 
-\affiliation{\vspace{9pt}\{t.roggla, jie.li, jack.jansen\}@cwi.nl, stefan.fjellsten@chyronhego.com, \{ian.c.kegel, mark.2.pilgrim, martin.trimby, doug.williams\}@bt.com, p.s.cesar@cwi.nl}
+\affiliation{\vspace{9pt}\{t.roggla, jie.li, jack.jansen\}@cwi.nl, stefan.fjellsten@chyronhego.com, \{ian.c.kegel, luke.2.pilgrim, martin.trimby, doug.williams\}@bt.com, p.s.cesar@cwi.nl}
 
 % The default list of authors is too long for headers.
 \renewcommand{\shortauthors}{T. R\"{o}ggla et al.}
@@ -80,7 +80,7 @@
   and interactive companion devices on the viewer side. In this case study, we describe the
   development of an end-to-end system enabling immersive and interactive experiences
   using an object-based broadcasting approach. We detail the deployment of this
-  system during the live broadcast of the FA Cup final at Wembley Stadium in
+  system during the live broadcast of the FA Cup Final at Wembley Stadium in
   London in May 2018. We also describe the trials and interviews we ran, the
   infrastructure we used, the final software developed for controlling and rendering
   on-screen graphics and the system for generating and configuring the live
@@ -247,18 +247,7 @@ official match day.
     \label{fig:timeline}
 \end{marginfigure}
 
-Object-Based broadcasting provides user-level personalization and it thus
-requires all broadcast graphics (non-video visualizations overlaid on top of
-the video) to be directly composited on the client device. This is a major shift
-from traditional broadcasts, where all graphics are overlaid at the OB Truck,
-making the creation process for such graphics quite cumbersome and time consuming.
-The design of these graphic elements and animations is thoroughly defined and
-specified down to pixel perfection. We tried to adopt a workflow common in traditional
-TV stations and networks, which meant that a new purpose-built WYSIWYG design
-tool was needed. Since there was no time and resources to create one, the
-short-term solution was to adapt an existing one from ChyronHego's product range. The researchers extended the existing
-broadcast graphics authoring tool \emph{ChyronHego Prime} with a compatible renderer,
-making it usable within our object-based broadcast infrastructure.
+Object-based broadcasting provides user-level personalization and it thus requires all broadcast graphics (non-video visualizations overlaid on top of the video) to be composited on the client device. This is a major shift from traditional broadcasts, where all graphics are overlaid and burnt into the transmission signal at the OB Truck. This requires new and more flexible ways to author graphics. Experience from previous trials, where we took on a quite developer-centric approach to coding such graphics in HTML and JavaScript, showed that the process was cumbersome and time-consuming. The design of these graphic elements and animations are valuable assets for a broadcaster and are thoroughly defined and specified down to pixel perfection. For the FA Cup Final we wanted to try out a more designer-friendly approach utilizing an existing broadcast WYSIWYG graphics authoring tool. The tool we choose was  \emph{ChyronHego Prime} (Figure 4). Using the \emph{ChyronHego Prime} scene description file format, the researchers created a specialized renderer for object-based broadcasting which can live execute Prime-authored graphics in the client devices. At the FA Cup Final, \emph{ChyronHego Prime} was also used for creating the traditional broadcast graphics (4K HDR), so we were able to re-use assets created for the broadcast graphics in the object-based broadcasting workflow as well. 
 
 \subsection{Production Tool}
 
@@ -320,13 +309,11 @@ a companion device such as a tablet (Figure~\ref{fig:homeexperience}).
 %\textbf{TV Match GFX}: the BT Sport Match GFX were replicated in terms of style, layout and animations using the modified version of the ChyronHego's Prime authoring tool. These included, among others, the clock, the score, all the players.
 %\textbf{Companion Graphics}: the BT Sport design style was adopted when creating the graphics for the companion app GUI. To launch the menu in the companion, the user could tap and access more media about the match (e.g., match overview, match stats, team line ups and replays).
 
-The deployment at Wembley Stadium was centered around our very own OB vehicle, a
+The deployment at Wembley Stadium was centered around our own OB vehicle, a
 Mercedes Sprinter van fitted with two small work areas and basic services
 such as power, cable routing, air conditioning and lighting. This vehicle was
 essential as a space to safely host and operate the additional components
-required for object-based broadcasting. The vehicle was provided by BT Sport
-supplier Telegenic, who also provided personnel to support the research team.
-The Telegenic team provided essential assistance for gaining access to the
+required for object-based broadcasting. The vehicle was provided with assistance from BT Sport, who also provided essential access to the
 necessary infrastructure and live feeds and provided a listen-only feed of the
 Match Director's talkback channel within the vehicle. This enabled the team to
 hear and follow the majority of vision and graphics cues given by the director throughout each match and thus
@@ -350,8 +337,7 @@ production truck to the vehicle.
 \end{marginfigure}
 
 \vspace{5pt}\noindent\textbf{Live Encoding.} Two live streaming encoders were loaned for the duration
-of the tests by BT supplier AWS Elemental, who also provided technical assistance
-with configuring them and resolving issues. Each encoder was capable of live
+of the tests with assistance from BT Sport. Each encoder was capable of live
 encoding a multi-layer DASH representation of 8 HD-SDI input streams. Once
 encoded, the DASH segments were uploaded to the CDN Origin Server, from where
 they could be consumed by the client applications. Given that the FA Cup Final
@@ -361,10 +347,7 @@ the Origin Server so that client apps were required to authenticate before they
 could download the stream.
 
 \vspace{5pt}\noindent\textbf{Internet Uplink.} Using additional live encoders
-also necessitated providing Internet uplink capacity dedicated to the OB vehicle. This
-proved to be the most challenging dependency. To upload the 3-layer
-MPEG-DASH representation for 8 distinct live streams, while providing headroom
-for audio streams and signaling, at least 100Mbps upstream was required. Finally, we used a dedicated BT uplink.
+also necessitated providing Internet uplink capacity dedicated to the OB vehicle. At least 100Mbps was required to upload the 3-layer MPEG-DASH representation for 8 distinct live streams, while providing headroom for audio streams and signaling.
 
 \vspace{5pt}\noindent\textbf{Triggering Interface.} One half of the OB vehicle was dedicated to live
 triggering of object-based production graphics using the production tools
@@ -376,22 +359,9 @@ client to display the live feed from the capture device within the primary video
 player component, rather than opening the delayed MPEG-DASH stream from the CDN
 Origin Server.
 
-\vspace{5pt}\noindent\textbf{Virtual Placement.} The Virtual Placement system was set up independently
-of the live production tools in one half of the vehicle during the FA Cup Final
-event. Its purpose was to enable the ChyronHego team to test their new workflow,
-enabling object-based virtual graphics to be rendered in a personalised way on
-a viewer's client device. This workflow uses ChyronHego's player tracking
-technology, \emph{Tracab}, based on dedicated networked cameras installed in a stadium
-to determine the location of players on the pitch at any point in time. Virtual
-Placement, at the same time, uses calibration parameters derived from a wide-angle
-camera to enable graphics to be rendered on the live broadcast feed as if they
-were part of the three-dimensional scene. By synchronizing Tracab player tracking
-data with Virtual Placement camera tracking data and streaming it to a client
-device, it should be possible for the client device to render virtual graphics
-around players as they move across the pitch - for example to provide additional
-statistics or a comparison between a viewer's favourite players.
+\vspace{5pt}\noindent\textbf{Tracking.} A headless camera tracking system (ChyronHego Virtual Placement) was set up independently of the live production tools in one half of the vehicle during the FA Cup Final event. Its purpose was to collect the main camera pose parameters during the game. These parameters are crucial for creating augmented graphics (graphics that blends into video as it was part of the three-dimensional scene). Traditionally, while burnt into the broadcast feed, these systems are used for adding billboards, rendering team logos on the pitch, visualize sport information as distance to goal on free-kicks, show offside lines and more. 2-IMMERSE researchers are using the captured data as research material to explore augmented graphics rendered in the client. At the same venue we also captured player tracking data from the ChyronHego TRACAB player tracking system, which determine the location of all the players in real-time. Having synchronized data sets with video, camera tracking and player tracking is valuable for future research in the object-based broadcasting domain.
 
-\vspace{5pt}\noindent\textbf{Content Distribution Network (CDN).} The 2-IMMERSE platform \cite{jansen2018, kegel2017} was the most significant
+\vspace{5pt}\noindent\textbf{2-IMMERSE Platform.} The 2-IMMERSE platform \cite{jansen2018, kegel2017} was the most significant
 off-site components, playing a vital role in the delivery of the end-to-end live
 tests. As with all 2-IMMERSE Distributed Media Applications, the Layout and
 Timeline services were responsible for orchestrating the viewer experience on
