@@ -4,33 +4,18 @@
 \usepackage{todonotes}
 
 % Copyright
-%\setcopyright{none}
-%\setcopyright{acmcopyright}
-\setcopyright{acmlicensed}
-%\setcopyright{rightsretained}
-%\setcopyright{usgov}
-%\setcopyright{usgovmixed}
-%\setcopyright{cagov}
-%\setcopyright{cagovmixed}
-
-% DOI
-\acmDOI{10.475/123_4}
-
-% ISBN
-\acmISBN{123-4567-24-567/08/06}
-
-%Conference
-\acmConference[CHI'19]{ACM CHI Conference}{May 2019}{Glasgow, Scotland, United Kingdom}
-\acmYear{2019}
 \copyrightyear{2019}
-
-\acmPrice{15.00}
+\acmYear{2019}
+\setcopyright{rightsretained}
+\acmConference[CHI'19 EA]{CHI Conference on Human Factors in Computing Systems Extended Abstracts}{May 4--9, 2019}{Glasgow, Scotland Uk}
+\acmBooktitle{CHI Conference on Human Factors in Computing Systems Extended Abstracts (CHI'19 Extended Abstracts), May 4--9, 2019, Glasgow, Scotland Uk}\acmDOI{10.1145/3290607.3299038}
+\acmISBN{978-1-4503-5971-9/19/05}
 
 %\acmBadgeL[http://ctuning.org/ae/ppopp2016.html]{ae-logo}
 %\acmBadgeR[http://ctuning.org/ae/ppopp2016.html]{ae-logo}
 
 \begin{document}
-\title{From the Lab to the OB Truck: Object-Based Broadcasting at the FA Cup Final in Wembley Stadium}
+\title{From the Lab to the OB Truck: Object-Based Broadcasting at the FA Cup in Wembley Stadium}
 
 \author{Thomas R\"{o}ggla$^1$, Jie Li$^1$, Stefan Fjellsten$^4$, Jack Jansen$^1$,  Ian Kegel$^3$, Luke Pilgrim$^3$, Martin Trimby$^3$, Doug Williams$^3$, Pablo Cesar$^{1,2}$}
 \affiliation{%
@@ -117,6 +102,13 @@
  should be easy to operate, facilitate the collaboration within the production team
  and guarantee timely delivery of the live broadcast.
 
+\begin{marginfigure}
+\hspace*{-2cm}
+    \includegraphics[width=10cm]{Figures/OBtruck.png}
+    \caption{Layout of a typical OB truck used at a live sporting event}
+    \label{fig:truck}
+\end{marginfigure}
+
  This case study presents the development and successful deployment of an
  end-to-end platform for interactive, immersive broadcast at
  a live sports event. In particular, we detail the requirement gathering phase,
@@ -132,37 +124,30 @@
  football match, delivering the experience to a number of viewers at
  their homes.
 
-\begin{marginfigure}
-\vspace{-10cm}
-\hspace*{-2cm}
-    \includegraphics[width=10cm]{Figures/OBtruck.png}
-    \caption{Layout of a typical OB truck used at a live sporting event}
-    \label{fig:truck}
-\end{marginfigure}
-
 At a big sports event such as this, an Outside Broadcasting (OB) truck is the most
 common unit for live broadcasting. With its mobility, OB trucks can access any
 location and work as a drive-in temporary production control center during live
 transmission, providing complete video and audio facilities (Figure~\ref{fig:truck}).
 An OB truck typically has a wall of monitors shared by all the staff in the truck.
 A video production switcher controlled by the director, audio mixer, a team in
-charge of recording and playback decks, and a team responsible for live graphics
-and so on. It enables the production team to bring the TV audience an authentic
+charge of recording and playback decks and a team responsible for live graphics.
+It enables the production team to bring the TV audience an authentic
 visual representation of an event as it is happening~\cite{owens2015}.
 OB trucks vary in sizes depending on the scale of coverage and the nature of the
 event. For a sport event, the coverage includes dozens of stationary cameras, a
 couple of handheld cameras, cameras on motorcycles to capture the main athletes
-and one or two helicopters with cameras to shoot the \emph{long-shot} of the
-scene~\cite{owens2015, Li:2018_TVX}. Today, the production team on OB trucks
+and helicopters with cameras to shoot \emph{long-shots} of the
+scene~\cite{owens2015, Li:2018_TVX}. Today, the production team in an OB truck
 orchestrate smoothly to deliver the same linear live program to all kinds TV
 screens. The team typically follows a pre-scripted \emph{running order document} that
 defines in detail where graphics, visual sources and sound come from and when
-they should be \emph{on-air}~\cite{Li:2018_TVX}.
+they should be put \emph{on-air}~\cite{Li:2018_TVX}.
 
-As companion screens (e.g.\ smartphones and tablets) continue to be integrated
-into standard television, a challenge the production team facing is to tailor
-the content of the TV program so that it works for companion screens as though
-it had been uniquely created for them. Content on companion screens is
+As users at home often have multiple devices at their disposal (e.g.\ smartphones
+and tablets) and they continue to be integrated
+into standard television, a challenge production teams are facing is to tailor
+the content of the TV program so that the content takes advantage of these
+additional devices and screens. Content on companion screens is
 customizable to provide audience access to additional information next to the TV
 screen, thus enabling interactive and immersive TV viewing
 experiences~\cite{bentley2017, dowell2015}. However, given the current workload
@@ -175,8 +160,8 @@ without requiring the production team to separately produce different versions
 of the program. The \emph{object}, here, refers to different media assets or content
 objects that are used to make a TV program~\cite{armstrong2014}. The OBB approach
 involves breaking down a program into separate objects, typically
-graphics, audio, video, background music, dialogues, subtitles, sound/visual
-effects, etc., and including metadata to describe how these objects can be
+media content such as graphics, audio, video, subtitles or effects and augmenting
+it using metadata to describe how these objects can be
 assembled on multiple screens. It enables the creation of a flexible, personalized,
 and responsive program without increasing the production
 workload~\cite{kegel2017, armstrong2014}. A rough layout of the production process
@@ -185,20 +170,18 @@ using our OBB system can be seen in Figure~\ref{fig:process}.
 \begin{marginfigure}
     % \vspace{1pt}
     \includegraphics[width=7cm]{Figures/process.png}
-    \caption{Production process for a live broadcast with our production platform}
+    \caption{Production process for a live broadcast with our production platform. Content is recorded and edited on-premises and relayed to end-users via the Internet}
     \label{fig:process}
 \end{marginfigure}
 
-
-
 \section{Preparation}
-Previously, we have reported successful groundwork for the design and development
+Previously, we reported successful groundwork for the design and development
 of a novel object-based broadcasting platform~\cite{kegel2017, Li:2018_CHI, Li:2018_TVX}.
 Our next objective was its deployment during a live event like the FA Cup Final
 2018 in Wembley. To better understand the challenges of delivering such a trial at
-a live football match broadcast, the authors negotiated (via BT Sport) to allow
-observation for better understanding of the current workflow involved at an OB
-truck. In particular, the following events were observed:
+a live football match broadcast, the authors negotiated (via BT Sport) to be allowed
+to observe the current workflow in an OB truck during a live event. In
+particular, the following events were observed:
 
 \begin{itemize}
   \item FA Community Shield match at Wembley Stadium on Sunday $6^{th}$ August 2017,
@@ -269,21 +252,22 @@ workflow as well.
 
 \subsection{Production Tool}
 
-Previous work of the research team resulted in a novel model and workflow for
-production tools that allow for object-based broadcasting~\cite{Li:2018_TVX,jansen2018}.
-The tools were intended for covering MotoGP races, but we had the intuition that
-they could be adapted for football, and other sports as well. We thus arranged a number
-of conversations with professionals working on TV sports broadcast and carefully
-observed the recordings from the OB truck at the FA Women's Super League football
-game. Drawing on the focus groups and the observations, we concluded that our previous
+Previous work of the team resulted in a novel model and workflow for
+production tools for object-based broadcasting~\cite{Li:2018_TVX,jansen2018}.
+The tools were intended to cover MotoGP races, but we had the intuition that
+they could be adapted for other sports as well. We thus arranged a number
+of conversations with professionals working on TV sports broadcasts asking them to
+detail their experiences and workflows. We also carefully
+studies the recordings from the OB truck at the FA Women's Super League 
+game. Drawing upon these observations, we concluded that our previous
 work was a good starting point, but required some modifications. First, all
-controls should be easy to manipulate and to target. Second, the person
-preparing the content for, for example, replay clips is not the same one as the
-person who decides when and if the content is inserted into the broadcast. The
+controls should be easy to manipulate and target. Second, the person
+preparing content for, e.g.\ replay clips is not the same as the
+person who decides when and if the content is actually broadcast. The
 former task is shared by several people, whereas the latter is usually performed
-by either the director or a vision mixer. Finally, we learned that in the truck
-there are a lot of special-purpose hardware devices with big buttons and dials,
-providing quick access to specific functions.
+by either the director or a vision mixer. Finally, we learned that trucks
+are equipped with special-purpose hardware devices, providing direct access to
+specific functions.
 
 \begin{marginfigure}
     \vspace{-6.5cm}
@@ -393,15 +377,17 @@ the players in real-time. Having synchronized data sets with video, camera
 tracking and player tracking is valuable for future research in the object-based
 broadcasting domain.
 
-\vspace{5pt}\noindent\textbf{2-IMMERSE Platform.} The 2-IMMERSE platform~\cite{jansen2018, kegel2017} was the most significant
-off-site components, playing a vital role in the delivery of the end-to-end live
-tests. As with all 2-IMMERSE Distributed Media Applications, the Layout and
-Timeline services were responsible for orchestrating the viewer experience on
-the TV and companion devices. In addition, for these tests it was also necessary
-to orchestrate the Live Preview Client. Another crucial extension to the platform
+\vspace{5pt}\noindent\textbf{2-IMMERSE Platform.} The 2-IMMERSE
+platform~\cite{jansen2018, kegel2017} was the most significant off-site
+component, playing a vital role in the delivery of the end-to-end live
+tests. As with all 2-IMMERSE presentations (dubbed \emph{Distributed Media
+Applications}), separate services were responsible for orchestrating the viewer experience on
+end-user devices by managing layouts timelines of on-screen objects.
+Additionally, for these tests it was also necessary
+to orchestrate live previews. Another crucial extension to the platform
 was the ability for timeline updates which were created by the Live Triggering
 Tool to be automatically inserted by the Editor service within the active
-timelines of every client context which was watching the match, while accounting
+timelines of every client context playing back the match, while accounting
 for the fact that off-site viewers' timelines would be delayed by up to a minute
 due to large buffers resulting from the MPEG-DASH live streaming configuration.
 
@@ -421,13 +407,6 @@ due to large buffers resulting from the MPEG-DASH live streaming configuration.
     \includegraphics[width=8cm]{Figures/liveproduction.jpg}
     \caption{The setup of the system in the OB truck at the stadium}
     \label{fig:liveproduction}
-\end{marginfigure}
-
-\begin{marginfigure}
-    \hspace*{-1cm}
-    \includegraphics[width=8cm]{Figures/IBC.jpg}
-    \caption{Presenting the project at IBC 2018 in Amsterdam}
-    \label{fig:ibc}
 \end{marginfigure}
 
 \textbf{New challenges for the industry.} Over the course of the project
@@ -452,32 +431,38 @@ smoother workflow. The third challenge we addressed was the live delivery of
 the objects triggered in the OB truck to the homes of all viewers in a timely
 manner.
 
-\vspace{5pt}\noindent\textbf{Impact on the industry.} Based on the video assets
-collected (Figure~\ref{fig:liveproduction}), we developed a more complete and
-polished as-live multiscreen FA Cup demonstration, showing how production
-tools can be used to edit and broadcast graphics following an OBB approach. Together with
-the production tools, it exhibited how viewers can personalize their experiences
+\vspace{5pt}\noindent\textbf{Impact on the industry.} Based on the collected assets
+(Figure~\ref{fig:liveproduction}), we developed a more complete as-live multiscreen
+FA Cup demonstration, showing how our tools can be used to edit and broadcast 
+graphics in an OBB approach. It showed how viewers can personalize their experiences
 through companion screens in home contexts. The
 demonstration was successfully presented at the \emph{Future Zone} of IBC
-(Figure~\ref{fig:ibc}), the most influential media technology exhibition in
-Europe. It received a wide audience range including key stakeholders from the
-broadcast industry, academics, and production teams; all who believed ``OBB is the future'.
+(Figure~\ref{fig:ibc}), the most influential media technology in Europe. It targeted a wide audience, including key stakeholders from broadcasting and academia, all who believed `OBB is the future'.
+
+\begin{marginfigure}
+    \vspace{2pc}
+    \hspace*{-1cm}
+    \includegraphics[width=8cm]{Figures/IBC.jpg}
+    \caption{Presenting the project at IBC 2018 in Amsterdam}
+    \label{fig:ibc}
+\end{marginfigure}
 
 \section{Future Work \& Conclusion}
 
 To help integrate the OBB approach into the existing
 production workflow, the next step is to develop a pre-production tool with a
 graphical interface, to allow people without programming skills to author
-multiscreen TV content. The preproduction tool aims at reducing the workload of
-the live broadcasting by creating a hierarchical overview of the content and
-arranging media objects on a storyline ahead of time~\cite{Li:2018_TVX}. The
+multiscreen content. The pre-production tool aims to reduce the workload of
+live broadcasting by enabling producers to create a rough storyboard of the broadcast and
+drop in pre-produced content ahead of time~\cite{Li:2018_TVX}. The
 prototype of the pre-production tool is expected to be tested by a group of
-producers and directors in the end of November, 2018. The live trial at Wembley Stadium for the 2018 FA Cup Final was a
+TV professionals December 2018. The live trial at the 2018 FA Cup Final was a
 milestone to help the OBB approach to make an impact. Through observing two live football matches, the
 content acquisition and distribution was tested and the live production tools
-were refined to be able to trigger all match graphics during the match.
+were refined to be able to trigger all graphics during the match.
 Our objective of authoring a live end-to-end OBB experience and testing the
-reach and scalability of our solution was achieved.
+reach and scalability of our solution was achieved and can hopefully be used to
+augment production workflows in future sporting events.
 
 \bibliography{sample-bibliography-sigchi-a}
 \bibliographystyle{ACM-Reference-Format}
