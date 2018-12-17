@@ -61,17 +61,17 @@
 
 \begin{abstract}
   While traditional live-broadcasting is typically comprised of a handful of
-  well-defined workflows, these become insufficient when targeting at multiple screens
+  well-defined workflows, these become insufficient when targeting multiple screens
   and interactive companion devices on the viewer side. In this case study, we describe the
   development of an end-to-end system enabling immersive and interactive experiences
   using an object-based broadcasting approach. We detail the deployment of this
   system during the live broadcast of the FA Cup Final at Wembley Stadium in
-  London in May 2018. We also describe the trials and interviews we ran, the
-  infrastructure we used, the final software developed for controlling and rendering
+  London in May 2018. We also describe the trials and interviews we ran in the run-up
+  to this event, the infrastructure we used, the final software developed for controlling and rendering
   on-screen graphics and the system for generating and configuring the live
-  broadcast-objects. During this process, we learned about the workflows inside an OB
+  broadcast-objects. In this process, we learned about the workflows inside an OB
   truck during live productions through an ethnographic study and the challenges
-  involved in running an object-based broadcast over the Internet which we discuss
+  involved in running an object-based broadcast over the Internet, which we discuss
   alongside other gained insights.
 \end{abstract}
 
@@ -88,14 +88,14 @@
 \maketitle
 
 \section{Introduction}
- Live sport events are at the core of the television industry, since it brings
+ Live sport events are one of the mainstays of the television industry, since they bring
  the viewers close to the experience and enables them to enjoy the excitement of the
- event. The liveness is essential and irreplaceable by time-shifted on-demand viewing
+ event at home. The liveness is essential and cannot be reaplced by time-shifted on-demand viewing
  such as on Netflix~\cite{matrix2014netflix}.
- However, due to the unpredictable characteristics of a live sport event, this
+ However, due to the unpredictable nature of a live sport event, this
  is challenging for the production team, also because the event does not take
  place in a studio. Live outside broadcasts are a world of well-defined
- workflows to deal with time-critical tasks. The roles inside an outside broadcast
+ workflows which deal with time-critical tasks. The roles inside an outside broadcast
  (OB) truck at a live sport event are divided by task, to capture
  the event while minimizing delays and mistakes (Figure~\ref{fig:overview}). Therefore, it is
  important that any software designed to supplement the workflow in an OB truck
@@ -109,54 +109,54 @@
     \label{fig:truck}
 \end{marginfigure}
 
- This case study presents the development and successful deployment of an
- end-to-end platform for interactive, immersive broadcast at
- a live sports event. In particular, we detail the requirement gathering phase,
- the aspects of the system used during the broadcast, including \emph{a graphics compositing
- application}, a so-called \emph{Live Triggering} tool for inserting broadcast objects
- into live streams, the camera setup, real-time encoding of video feeds and content
- distribution over the Internet.
- We show the path from a rough first prototype to a complete multi-user platform
- with hardware integration. Finally, we also present a series of trials and
- experiments that were completed along the way, culminating the final
- deployment of the system at the FA Cup final at Wembley stadium in London in
- May 2018. There, the platform was used to support a test-broadcast of the
- football match, delivering the experience to a number of viewers at
- their homes.
+This case study presents the development and successful deployment of an
+end-to-end platform for interactive, immersive broadcasts at
+a live sports event. In particular, we detail the requirement gathering phase,
+the aspects of the system used during the broadcast, including \emph{a graphics compositing
+application}, a so-called \emph{Live Triggering} tool for inserting broadcast objects
+into live streams, the camera setup, real-time encoding of video feeds and content
+distribution over the Internet.
+We show the path from a rough first prototype to a complete multi-user platform
+with hardware integration. Finally, we also present a series of trials and
+experiments that were completed along the way, culminating in the final
+deployment of the system at the FA Cup final at Wembley stadium in London in
+May 2018. There, the platform was used to support a test-broadcast of the
+football match, delivering the experience to a number of viewers at
+their homes.
 
 At a big sports event such as this, an Outside Broadcasting (OB) truck is the most
 common unit for live broadcasting. With its mobility, OB trucks can access any
 location and work as a drive-in temporary production control center during live
 transmission, providing complete video and audio facilities (Figure~\ref{fig:truck}).
-An OB truck typically has a wall of monitors shared by all the staff in the truck.
-A video production switcher controlled by the director, audio mixer, a team in
+An OB truck typically has a wall of monitors shared by all of the staff in the truck.
+A video production switcher controlled by the director, an audio mixer, a team in
 charge of recording and playback decks and a team responsible for live graphics.
 It enables the production team to bring the TV audience an authentic
 visual representation of an event as it is happening~\cite{owens2015}.
-OB trucks vary in sizes depending on the scale of coverage and the nature of the
+OB trucks vary in size depending on the scale of coverage and the nature of the
 event. For a sport event, the coverage includes dozens of stationary cameras, a
 couple of handheld cameras, cameras on motorcycles to capture the main athletes
 and helicopters with cameras to shoot \emph{long-shots} of the
 scene~\cite{owens2015, Li:2018_TVX}. Today, the production team in an OB truck
-orchestrate smoothly to deliver the same linear live program to all kinds TV
+orchestrate smoothly to deliver the same linear live program to all kinds of TV
 screens. The team typically follows a pre-scripted \emph{running order document} that
 defines in detail where graphics, visual sources and sound come from and when
 they should be put \emph{on-air}~\cite{Li:2018_TVX}.
 
 As users at home often have multiple devices at their disposal (e.g.\ smartphones
-and tablets) and they continue to be integrated
+and tablets) and these continue to be integrated
 into standard television, a challenge production teams are facing is to tailor
 the content of the TV program so that the content takes advantage of these
 additional devices and screens. Content on companion screens is
-customizable to provide audience access to additional information next to the TV
+customizable to provide the audience access to additional information next to the TV
 screen, thus enabling interactive and immersive TV viewing
 experiences~\cite{bentley2017, dowell2015}. However, given the current workload
-of the live broadcasting on OB trucks, it is difficult to deliver additional
+of live broadcasting inside OB trucks, it is difficult to deliver additional
 versions of the program to companion screens. New technologies are required for
 this purpose~\cite{Li:2018_TVX, armstrong2014}. One such technology is
 \emph{object-based broadcasting} (OBB). It allows the content of a TV program to
-adapt to the requirements of different viewers on multiple companion screens,
-without requiring the production team to separately produce different versions
+adapt to the requirements of different viewers on multiple screens, without
+requiring the production team to separately produce different versions
 of the program. The \emph{object}, here, refers to different media assets or content
 objects that are used to make a TV program~\cite{armstrong2014}. The OBB approach
 involves breaking down a program into separate objects, typically
@@ -179,8 +179,8 @@ Previously, we reported successful groundwork for the design and development
 of a novel object-based broadcasting platform~\cite{kegel2017, Li:2018_CHI, Li:2018_TVX}.
 Our next objective was its deployment during a live event like the FA Cup Final
 2018 in Wembley. To better understand the challenges of delivering such a trial at
-a live football match broadcast, the authors negotiated (via BT Sport) to be allowed
-to observe the current workflow in an OB truck during a live event. In
+a live broadcast of a football match, the authors negotiated (via BT Sport) to be allowed
+to observe the current processes inside an OB truck during a live event. In
 particular, the following events were observed:
 
 \begin{itemize}
@@ -207,18 +207,14 @@ Such observations and tests resulted in a number of requirements, anticipating
 operational and technological risks. Such requirements included, for example,
 the creation of a number of documents such as the call sheet and the team sheet
 (for pre-populating the graphics with the correct player names one hour before
-the beginning of the match). The requirements covered as well technological
+the beginning of the match). The requirements also covered technological
 aspects, such as the pre-production of the assets, the development of the
 infrastructure to be deployed at the venue and in the cloud and the access to
-various data channels such as the clean video data feeds. Finally, there were
+various data channels such as clean video data feeds. Finally, there were
 other operational guidelines for, for example, granting access to the researchers
 or colocating our mini OB truck in the OB Compound with the other broadcasters.
 The following subsections will detail the different preparation steps before the
 official match day.
-
-%\subection{Infrastructure}
-%A delivery plan was developed in which the first event on 22nd April was used to gain familiarity with the OB facilities at Wembley Stadium and to test live content acquisition and distribution, plus live triggering of production graphics as far as possible while being aware that further development would be required to complete the client experience following this event. The second event, on 12th May, was used as a ‘dress rehearsal’ to test end-to-end system performance and identify remaining issues to be addressed prior to the final event on 19th May for the FA Final Cup. 
-%\todo{image about the infrastructure; hopefully from the deliverable; otherwise maybe Jack has one}
 
 \subsection{Graphics}
 
@@ -234,43 +230,43 @@ Object-based broadcasting provides user-level personalization and it thus
 requires all broadcast graphics (non-video visualizations overlaid on top of
 the video) to be composited on the client device. This is a major shift from
 traditional broadcasts, where all graphics are overlaid and burnt into the
-transmission signal at the OB Truck. This requires new and more flexible ways
+transmission signal at the OB truck. This requires new and more flexible ways
 to author graphics. Experience from previous trials, where we took on a quite
 developer-centric approach to coding such graphics in HTML and JavaScript,
 showed that the process was cumbersome and time-consuming. The design of these
 graphic elements and animations are valuable assets for a broadcaster and are
 thoroughly defined and specified down to pixel perfection. For the FA Cup Final
-we wanted to try out a more designer-friendly approach utilizing an existing
+we wanted to try out a more designer-friendly approach by utilizing an existing
 broadcast WYSIWYG graphics authoring tool. The tool we choose was
-\emph{ChyronHego Prime} (Figure 4). Using the \emph{ChyronHego Prime} scene
+\emph{ChyronHego Prime} (Figure 4). Using the ChyronHego Prime scene
 description file format, the researchers created a specialized renderer for
-object-based broadcasting which can live execute Prime-authored graphics in the
-client devices. At the FA Cup Final, \emph{ChyronHego Prime} was also used for
+object-based broadcasting which can execute Prime-authored graphics on the
+client devices in real time. At the FA Cup Final, \emph{ChyronHego Prime} was also used for
 creating the traditional broadcast graphics (4K HDR), so we were able to re-use
-assets created for the broadcast graphics in the object-based broadcasting
+assets created for the broadcast graphics in our object-based broadcasting
 workflow as well.
 
 \subsection{Production Tool}
 
 Previous work of the team resulted in a novel model and workflow for
 production tools for object-based broadcasting~\cite{Li:2018_TVX,jansen2018}.
-The tools were intended to cover MotoGP races, but we had the intuition that
+The tools were originally intended to cover MotoGP races, but we had the intuition that
 they could be adapted for other sports as well. We thus arranged a number
-of conversations with professionals working on TV sports broadcasts asking them to
-detail their experiences and workflows. We also carefully
-studies the recordings from the OB truck at the FA Women's Super League
-game. Drawing upon these observations, we concluded that our previous
-work was a good starting point, but required some modifications. First, all
-controls should be easy to manipulate and target. Second, the person
+of conversations with professionals working on TV sports broadcasts, asking them to
+detail their experiences and workflows. We also carefully studied the recordings
+from the OB truck at the FA Women's Super League game. Drawing upon these
+observations, we concluded that our existing platform was a good starting point,
+but required some modifications. First, all
+controls needed to be easy to manipulate and target. Second, the person
 preparing content for, e.g.\ replay clips is not the same as the
 person who decides when and if the content is actually broadcast. The
 former task is shared by several people, whereas the latter is usually performed
 by either the director or a vision mixer. Finally, we learned that trucks
-are equipped with special-purpose hardware devices, providing direct access to
+are equipped with special-purpose devices, providing direct access to
 specific functions.
 
 \begin{marginfigure}
-    \vspace{-6.5cm}
+    \vspace{-8cm}
     \includegraphics[width=\marginparwidth-10pt]{Figures/triggertool.jpg}
     \caption{Triggering tool in operation inside a web browser}
     \label{fig:triggertool}
@@ -282,32 +278,27 @@ specific functions.
     \label{fig:streamdeck}
 \end{marginfigure}
 
-Based on the new requirements, we designed a new version of our live triggering
+Based on the requirements, we designed a new version of our live triggering
 tool, diving it into two sub-tasks, each one targeted at a different professional
-(Figure~\ref{fig:triggertool}). The first tool, called \emph{Triggering Tool} allows to prepare media
-related to the events, such as replay clips or inserting on-screen labels and queueing
+(Figure~\ref{fig:triggertool}). The first tool, called \emph{Triggering Tool} allows to prepare media,
+such as replay clips, or inserting on-screen labels and queueing
 them for the director to launch. The second one, called \emph{Trigger Launcher}, intended for the director, can
-be used for launching the events when ready, i.e.\ inserting them into the broadcast.
+be used for launching these events, i.e.\ inserting them into the broadcast.
 For the second one, we were able to integrate support for \emph{StreamDeck}, a
 hardware device intended for video-game streamers. The device is equipped with 15
-hardware buttons, where each button is backed by a $72\times72$ pixel LCD screen, plugged into the computer via USB
+buttons, where each button is backed by a $72\times72$ pixel LCD screen, plugged into the computer via USB
 (Figure~\ref{fig:streamdeck}). This enabled us to map the events rendered in the
-trigger launcher application onto the buttons, allowing the user to conveniently launch and
+trigger launcher onto the buttons, allowing the user to conveniently launch and
 modify events quickly from this console instead of having to use the mouse and
 click the corresponding button on the computer screen.
 
 \section{Object-Based Broadcasting during FA Cup Final}
 After the preparation work described in the previous section, the research team
-was (almost) ready to bring a unique football experience during the FA Cup Final
+was (almost) ready to bring a unique football experience of the FA Cup Final
 at Wembley Stadium to people's homes. The football experience was to be a unique, object-based broadcast, since a
 multitude of media objects could be assembled in a personalized manner and rendered on
 different screens at home: a single primary shared screen (main TV) coupled with
 a companion device such as a tablet (Figure~\ref{fig:homeexperience}).
-
-%The main available assets included:
-%\textbf{Live Camera Feeds} we broadcast a range of live camera feeds, such as the clean broadcast feeds, the main camera-wide shot, the manager cameras, the team benches, the LH and RH High behind, and the Spider cam.
-%\textbf{TV Match GFX}: the BT Sport Match GFX were replicated in terms of style, layout and animations using the modified version of the ChyronHego's Prime authoring tool. These included, among others, the clock, the score, all the players.
-%\textbf{Companion Graphics}: the BT Sport design style was adopted when creating the graphics for the companion app GUI. To launch the menu in the companion, the user could tap and access more media about the match (e.g., match overview, match stats, team line ups and replays).
 
 The deployment at Wembley Stadium was centered around our own OB vehicle, a
 Mercedes Sprinter van fitted with two small work areas and basic services
@@ -325,8 +316,8 @@ of the match.
 \vspace{5pt}\noindent\textbf{Live Camera Feeds.} The project team requested
 access to a range of live camera feeds. We had access to the clean and dirty
 (Match Director's output) broadcast feeds, the main camera-wide shot, the
-manager cameras, the team benches, the LH and RH High behind, and the Spider
-cam. Each camera feed was provided in HD-SDI format in a separate coaxial cable
+manager cameras, the team benches, cameras behind each goal and the Spider
+cam. Each camera feed was provided in HD-SDI format through a separate coaxial cable
 routed from the BT Sport production truck to the vehicle.
 
 \begin{marginfigure}
@@ -339,11 +330,11 @@ routed from the BT Sport production truck to the vehicle.
 \vspace{5pt}\noindent\textbf{Live Encoding.} Two live streaming encoders were loaned for the duration
 of the tests with assistance from BT Sport. Each encoder was capable of live
 encoding a multi-layer DASH representation of 8 HD-SDI input streams. Once
-encoded, the DASH segments were uploaded to the CDN Origin Server, from where
+encoded, the DASH segments were uploaded to our CDN origin server, from where
 they could be consumed by the client applications. Given that the FA Cup Final
 match was simultaneously broadcast free-to-air in the UK, it was agreed that
 stream encryption need not be used, but instead access control was applied to
-the Origin Server so that client apps were required to authenticate before they
+the CDN so that client apps were required to authenticate before they
 could download the stream.
 
 \vspace{5pt}\noindent\textbf{Internet Uplink.} Using additional live encoders
@@ -353,27 +344,27 @@ At least 100Mbps was required to upload the 3-layer MPEG-DASH representation for
 
 \vspace{5pt}\noindent\textbf{Triggering Interface.} One half of the OB vehicle was dedicated to live
 triggering of object-based production graphics using the production tools
-described above. The tools ran on a laptop PC with the addition of an Elgato
-Streamdeck programmable keypad. The production tools communicate with our
-platform services, which were hosted off-site within an Amazon Web Services
+described above. The tools ran on a laptop with the addition of an Elgato
+Streamdeck programmable keypad. The production tools communicated with our
+platform services, which were hosted off-site inside an Amazon Web Services
 environment. The production tools were modified as well to enable the preview
 client to display the live feed from the capture device within the primary video
 player component, rather than opening the delayed MPEG-DASH stream from the CDN
-Origin Server.
+origin server.
 
 \vspace{5pt}\noindent\textbf{Tracking.} A headless camera tracking system
 (ChyronHego Virtual Placement) was set up independently of the live production
 tools in one half of the vehicle during the FA Cup Final event. Its purpose was
 to collect the main camera pose parameters during the game. These parameters
-are crucial for creating augmented graphics (graphics that blends into video as
+are crucial for creating augmented graphics (graphics that blend into video as if
 it was part of the three-dimensional scene). Traditionally, while burnt into
 the broadcast feed, these systems are used for adding billboards, rendering
-team logos on the pitch, visualize sport information as distance to goal on
+team logos on the pitch, visualizing information such as distance to goal on
 free-kicks, show offside lines and more. 2-IMMERSE researchers are using the
 captured data as research material to explore augmented graphics rendered in
 the client. At the same venue we also captured player tracking data from the
-ChyronHego TRACAB player tracking system, which determine the location of all
-the players in real-time. Having synchronized data sets with video, camera
+ChyronHego TRACAB player tracking system, which can determine the location of all
+players in real-time. Having synchronized data sets with video, camera
 tracking and player tracking is valuable for future research in the object-based
 broadcasting domain.
 
@@ -381,38 +372,29 @@ broadcasting domain.
 platform~\cite{jansen2018, kegel2017} was the most significant off-site
 component, playing a vital role in the delivery of the end-to-end live
 tests. As with all 2-IMMERSE presentations (dubbed \emph{Distributed Media
-Applications}), separate services were responsible for orchestrating the viewer experience on
-end-user devices by managing layouts timelines of on-screen objects.
-Additionally, for these tests it was also necessary
-to orchestrate live previews. Another crucial extension to the platform
-was the ability for timeline updates which were created by the Live Triggering
-Tool to be automatically inserted by the Editor service within the active
-timelines of every client context playing back the match, while accounting
-for the fact that off-site viewers' timelines would be delayed by up to a minute
-due to large buffers resulting from the MPEG-DASH live streaming configuration.
-
-%\textbf{Replay} During some live events, the on-site BT Sport production team create replays that are automatically uploaded to the EVS C-Cast platform  for on-demand viewing and distribution to existing mobile applications. In order to provide interactive access to replays on demand within the 2-IMMERSE Football client applications, it was necessary to create an additional off-site workflow in which the required replays were extracted from C-Cast, converted to the MPEG-DASH adaptive bitrate streaming format, and made available on the 2-IMMERSE CDN Origin Server. The project team configured an instance of cloud-based AWS Elemental MediaConvert to automatically encode replay files into a suitable MPEG-DASH format when uploaded to a specific Amazon S3 location. The encoded output is then automatically transferred to the 2-IMMERSE Origin Server, while at the same time the necessary metadata describing the reply is created so that the appropriate menus within the client applications can be updated to provide access to the replay.
+Applications}), distinct services were responsible for orchestrating the viewer experience on
+end-user devices by managing layouts and and timeline sequence of on-screen objects.
+Additionally, for these tests it was also necessary to orchestrate live previews for the OB truck.
+Another crucial extension to the platform was the ability for timeline updates
+which were created by the Live Triggering Tool to be automatically propagated to the active timelines of every client
+context playing back the match, while accounting for the fact that off-site
+viewers' timelines might be delayed by up to a minute due to large buffers
+resulting from the MPEG-DASH live streaming configuration.
 
 \section{Discussion}
-%  \todo{to include some photo from IBC}
-%  \todo{include a paragraph about IBC as a successful outcome of Wembley}
-%  \todo{to discuss about the impact of the work on BT Sports, as a showcase of future valuable technology}
-%  \todo{to discuss about the new toolset developed by Chyron Hego for creating GFX and distribute them in an object-based oriented manner}
-%  \todo{to discuss about our production tools and the next steps}
-%  \todo{to bring back other papers and experiences, like the one from Frank Bentley}
 
 \begin{marginfigure}
-    \vspace{-18pc}
+    \vspace{-8pc}
     \hspace*{-1cm}
     \includegraphics[width=8cm]{Figures/liveproduction.jpg}
     \caption{The setup of the system in the OB truck at the stadium}
     \label{fig:liveproduction}
 \end{marginfigure}
 
-\textbf{New challenges for the industry.} Over the course of the project
+\textbf{New challenges for the industry.} During the course of the project
 (Figure~\ref{fig:timeline}), we successfully bridged the gap between lab
 research and key players in the production chain (e.g. BT Sports, MoovTV),
-motivating them to think of developing use cases or tools taking advantage of
+motivating them to think about developing use cases or tools taking advantage of
 OBB\@. As noted by Bentley et.al.~\cite{bentley2009}, the ethnographic-style
 field study can take new concepts to real users in early stages of development,
 quickly illuminating potential bottlenecks and challenges. In our trial, the
@@ -421,25 +403,27 @@ time-critical environment. To do so, we used an existing authoring tool
 (ChyronHego Prime) with a graphical interface but an XML-based storage format,
 enabling a \textit{designer} to create graphics without needing a
 \textit{developer}. However, the application was not specifically designed for
-OBB processes. New production tools to visually create OBB assets are needed.
+OBB processes. Showing that new production tools to visually create OBB assets are needed.
 The second challenge addressed is the usability of the live OBB production
-tool. A new version of this tool was separated into two parts.  One part is
+tool. A new version of this tool was separated into two parts. One part is
 used to prepare and queue the media assets by an assistant of the director, the
-other part is for the director to launch the media assets in queues. The new
+other part is for the director to launch the media assets from a queue. The new
 version is expected to reduce the workload for the director and result in a
 smoother workflow. The third challenge we addressed was the live delivery of
 the objects triggered in the OB truck to the homes of all viewers in a timely
 manner.
 
 \vspace{5pt}\noindent\textbf{Impact on the industry.} Based on the collected assets
-(Figure~\ref{fig:liveproduction}), we developed a more complete as-live multiscreen
-FA Cup demonstration, showing how our tools can be used to edit and broadcast
-graphics in an OBB approach. It showed how viewers can personalize their experiences
-through companion screens in home contexts. The
-demonstration was successfully presented at the \emph{Future Zone} of IBC
-(Figure~\ref{fig:ibc}), the most influential media technology in Europe. It targeted a wide audience, including key stakeholders from broadcasting and academia, all who believed `OBB is the future'.
+(Figure~\ref{fig:liveproduction}) during the live event, we developed a more complete as-live multiscreen
+FA Cup demonstration, showing how our tools can be used to edit broadcasts
+in an OBB approach. It showed how viewers can personalize their experiences
+through companion screens in home contexts. The demonstration was successfully
+presented at the \emph{Future Zone} of IBC (Figure~\ref{fig:ibc}), the most
+influential media exhibition in Europe. It targeted a wide audience, including
+key stakeholders from broadcasting and academia, all who believed `\emph{OBB is the future}'.
 
 \begin{marginfigure}
+    \vspace{0.5pc}
     \hspace*{-1cm}
     \includegraphics[width=8cm]{Figures/IBC.jpg}
     \caption{Presenting the project at IBC 2018 in Amsterdam}
@@ -448,17 +432,16 @@ demonstration was successfully presented at the \emph{Future Zone} of IBC
 
 \section{Future Work \& Conclusion}
 
-To help integrate the OBB approach into the existing
-production workflow, the next step is to develop a pre-production tool with a
-graphical interface, to allow people without programming skills to author
-multiscreen content. The pre-production tool aims to reduce the workload of
-live broadcasting by enabling producers to create a rough storyboard of the broadcast and
-drop in pre-produced content ahead of time~\cite{Li:2018_TVX}. The
-prototype of the pre-production tool is expected to be tested by a group of
-TV professionals December 2018. The live trial at the 2018 FA Cup Final was a
-milestone to help the OBB approach to make an impact. Through observing two live football matches, the
-content acquisition and distribution was tested and the live production tools
-were refined to be able to trigger all graphics during the match.
+To help integrate the OBB approach into existing production workflows, the next
+step is to develop a pre-production tool with a graphical interface, to allow
+people without programming skills to author multiscreen content. The pre-production
+tool aims to reduce the workload of live broadcasting by enabling producers to
+create a rough storyboard of the broadcast and drop in pre-produced content ahead
+of time~\cite{Li:2018_TVX}. The prototype of the pre-production tool is expected
+to be tested by a group of TV professionals in December 2018. The live trial at
+the 2018 FA Cup Final was a milestone to help the OBB approach to make an impact.
+Through observing two live football matches, the content acquisition and distribution
+was tested and the live production tools were refined to be able to trigger all graphics during the match.
 Our objective of authoring a live end-to-end OBB experience and testing the
 reach and scalability of our solution was achieved and can hopefully be used to
 augment production workflows in future sporting events.
@@ -466,7 +449,7 @@ augment production workflows in future sporting events.
 \begin{sidebar}
     \vspace{2pc}
     \noindent\textbf{Acknowledgements}\\
-    \noindent The work presented in this paper was supported by the EU funded
+    \noindent The work presented in this paper was supported by the EU-funded
     H2020 ICT project 2-IMMERSE, under contract 687655.
 \end{sidebar}
 
